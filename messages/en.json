@@ -42,7 +42,8 @@
       "data": { "q": "Where is my data stored?", "a": "Only in this browser (localStorage). There is no server database and we never collect resume content. Use “Export JSON” to back up or move to another computer." },
       "jobsite": { "q": "Can I use it on job boards?", "a": "Yes. Upload the .docx as an attachment, or copy and paste its content into application forms." },
       "pages": { "q": "Are page breaks the same as in the preview?", "a": "Close, but Word decides the final page breaks. The dashed lines in the preview only mark A4 page positions." },
-      "wordMarks": { "q": "Why is there a small square next to headings like Education in Word?", "a": "That’s Word’s “keep with next” marker. It only shows while formatting marks (¶) are visible, never prints, and won’t appear in a saved PDF. It just keeps each heading attached to the content below it." }
+      "wordMarks": { "q": "Why is there a small square next to headings like Education in Word?", "a": "That’s Word’s “keep with next” marker. It only shows while formatting marks (¶) are visible, never prints, and won’t appear in a saved PDF. It just keeps each heading attached to the content below it." },
+      "pwaInstall": { "q": "Can I install it on my phone or computer?", "a": "Yes — this site is a PWA. In Chrome or Edge, click the install icon in the address bar or choose “Install app” from the menu. On iPhone or iPad, use Safari’s Share → “Add to Home Screen”. It opens in its own window like a regular app, and your resume data still stays on your device only." }
     },
     "cta": {
       "title": "Start your next resume now",

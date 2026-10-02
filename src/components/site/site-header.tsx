@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { buttonClass } from "@/components/ui/button";
@@ -22,8 +23,9 @@ export function Logo() {
     <Link
       href="/"
       onClick={handleClick}
-      className="shrink-0 text-lg font-bold tracking-tight text-zinc-900 cursor-pointer"
+      className="flex shrink-0 cursor-pointer items-center gap-2 text-lg font-bold tracking-tight text-zinc-900"
     >
+      <Image src="/android-chrome-192x192.png" alt="" width={24} height={24} className="rounded-md" />
       {t("siteName")}
     </Link>
   );
