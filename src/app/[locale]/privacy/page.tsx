@@ -5,8 +5,7 @@ import { SiteHeader } from "@/components/site/site-header";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/privacy">): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Meta" });
-  return { title: t("privacyTitle"), alternates: { canonical: `/${locale}/privacy` } };
+  return { alternates: { canonical: `/${locale}/privacy` } };
 }
 
 export default async function PrivacyPage({ params }: PageProps<"/[locale]/privacy">) {

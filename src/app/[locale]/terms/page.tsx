@@ -5,8 +5,7 @@ import { SiteHeader } from "@/components/site/site-header";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/terms">): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Meta" });
-  return { title: t("termsTitle"), alternates: { canonical: `/${locale}/terms` } };
+  return { alternates: { canonical: `/${locale}/terms` } };
 }
 
 export default async function TermsPage({ params }: PageProps<"/[locale]/terms">) {

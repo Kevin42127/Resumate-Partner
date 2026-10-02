@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
   const t = await getTranslations({ locale, namespace: "Meta" });
   return {
     metadataBase: new URL(SITE_URL),
-    title: { default: t("title"), template: `%s｜${t("siteName")}` },
+    title: t("siteName"),
     description: t("description"),
     applicationName: t("siteName"),
     manifest: "/site.webmanifest",
