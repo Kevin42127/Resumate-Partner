@@ -95,6 +95,21 @@ export const ScanIcon = (p: IconProps) => (
     <path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2M8 12h8" />
   </svg>
 );
+export const HomeIcon = (p: IconProps) => (
+  <svg width={16} height={16} viewBox="0 -960 960 960" fill="currentColor" aria-hidden {...p}>
+    <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+  </svg>
+);
+export const MenuIcon = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M4 7h16M4 12h16M4 17h16" />
+  </svg>
+);
+export const XIcon = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M6 6l12 12M18 6 6 18" />
+  </svg>
+);
 export const ArrowLeftIcon = (p: IconProps) => (
   <svg {...base(p)}>
     <path d="M19 12H5m0 0 6 6m-6-6 6-6" />

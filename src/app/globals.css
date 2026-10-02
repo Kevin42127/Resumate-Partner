@@ -25,6 +25,20 @@ body {
   color: var(--color-white);
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 600ms ease-out,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-shown {
+  opacity: 1;
+  transform: none;
+}
+
 .fade-in {
   animation: fade-in 500ms ease-out both;
 }
@@ -40,8 +54,23 @@ body {
   animation: menu-in 140ms ease-out both;
 }
 
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
 @keyframes menu-in {
   from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+.menu-out {
+  animation: menu-out 140ms ease-in both;
+}
+
+@keyframes menu-out {
+  to {
     opacity: 0;
     transform: scale(0.96);
   }

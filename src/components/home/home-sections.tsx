@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { buttonClass } from "@/components/ui/button";
 import { ArrowRightIcon, CheckIcon, DownloadIcon, FileIcon, LockIcon, ScanIcon } from "@/components/ui/icons";
 import { FAQ_KEYS } from "@/lib/faq";
+import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/utils";
 
 export { FAQ_KEYS };
@@ -23,8 +24,9 @@ export function Hero() {
   const trust = ["noSignup", "local", "ats"] as const;
   return (
     <section id="hero" className="relative isolate flex min-h-dvh items-center overflow-hidden bg-brand-soft">
-      <div aria-hidden className="absolute -top-40 -left-40 -z-10 size-[28rem] rounded-full bg-brand-muted" />
-      <div aria-hidden className="absolute -right-40 -bottom-40 -z-10 size-[28rem] rounded-full bg-brand-muted" />
+      <div aria-hidden className="absolute -top-48 -left-48 -z-10 size-[36rem] rounded-full bg-gradient-to-br from-orange-200/80 via-brand-muted to-transparent blur-3xl" />
+      <div aria-hidden className="absolute -right-48 -bottom-48 -z-10 size-[36rem] rounded-full bg-gradient-to-tl from-amber-200/70 via-brand-muted to-transparent blur-3xl" />
+      <div aria-hidden className="grain pointer-events-none absolute inset-0 -z-10 opacity-[0.05] mix-blend-multiply" />
       <div className={cn(CONTAINER, "fade-in py-20 text-center")}>
         <p className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white px-3.5 py-1.5 text-xs font-medium text-zinc-700 shadow-xs">
           <span className="relative flex size-2">
@@ -71,23 +73,26 @@ export function Features() {
   return (
     <section className="flex min-h-[80dvh] items-center bg-white py-24">
       <div className={CONTAINER}>
-        <h2 className="text-center text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl">{t("title")}</h2>
+        <Reveal>
+          <h2 className="text-center text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl">{t("title")}</h2>
+        </Reveal>
         <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {items.map(({ key, Icon, hue }) => (
-            <div
-              key={key}
-              className={cn(
-                "relative overflow-hidden rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl",
-                hue.ring,
-              )}
-            >
-              <span aria-hidden className={cn("absolute inset-x-0 top-0 h-1", hue.bar)} />
-              <span className={cn("grid size-12 place-items-center rounded-xl", hue.icon)}>
-                <Icon width={22} height={22} />
-              </span>
-              <h3 className="mt-6 text-lg font-semibold tracking-tight text-zinc-900">{t(`${key}.title`)}</h3>
-              <p className="mt-2 leading-relaxed text-zinc-600">{t(`${key}.desc`)}</p>
-            </div>
+          {items.map(({ key, Icon, hue }, i) => (
+            <Reveal key={key} delay={i * 90} className="h-full">
+              <div
+                className={cn(
+                  "relative h-full overflow-hidden rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl",
+                  hue.ring,
+                )}
+              >
+                <span aria-hidden className={cn("absolute inset-x-0 top-0 h-1", hue.bar)} />
+                <span className={cn("grid size-12 place-items-center rounded-xl", hue.icon)}>
+                  <Icon width={22} height={22} />
+                </span>
+                <h3 className="mt-6 text-lg font-semibold tracking-tight text-zinc-900">{t(`${key}.title`)}</h3>
+                <p className="mt-2 leading-relaxed text-zinc-600">{t(`${key}.desc`)}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -105,10 +110,12 @@ export function Steps() {
   return (
     <section className="flex min-h-[80dvh] items-center bg-stone-50 py-24">
       <div className={CONTAINER}>
-        <h2 className="text-center text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl">{t("title")}</h2>
+        <Reveal>
+          <h2 className="text-center text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl">{t("title")}</h2>
+        </Reveal>
         <ol className="mt-16 grid gap-10 md:grid-cols-3">
           {items.map(({ key, Icon, color }, i) => (
-            <li key={key} className="relative flex flex-col items-center text-center">
+            <Reveal as="li" key={key} delay={i * 90} className="relative flex flex-col items-center text-center">
               {i < items.length - 1 && (
                 <span
                   aria-hidden
@@ -123,7 +130,7 @@ export function Steps() {
               </span>
               <h3 className="mt-6 text-lg font-semibold tracking-tight text-zinc-900">{t(`${key}.title`)}</h3>
               <p className="mt-2 max-w-xs leading-relaxed text-zinc-600">{t(`${key}.desc`)}</p>
-            </li>
+            </Reveal>
           ))}
         </ol>
       </div>
@@ -178,15 +185,18 @@ export function Faq() {
   return (
     <section className="flex min-h-[80dvh] items-center bg-white py-24">
       <div className="mx-auto w-full max-w-3xl px-5 sm:px-8">
-        <h2 className="text-center text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl">{t("title")}</h2>
+        <Reveal>
+          <h2 className="text-center text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl">{t("title")}</h2>
+        </Reveal>
         <div className="mt-12 flex flex-col gap-3">
           {FAQ_KEYS.map((key, i) => (
-            <FaqItem
-              key={key}
-              q={t(`${key}.q`)}
-              a={t(`${key}.a`)}
-              dotColor={dots[i % dots.length]}
-            />
+            <Reveal key={key} delay={i * 50}>
+              <FaqItem
+                q={t(`${key}.q`)}
+                a={t(`${key}.a`)}
+                dotColor={dots[i % dots.length]}
+              />
+            </Reveal>
           ))}
         </div>
       </div>
@@ -198,17 +208,22 @@ export function FinalCta() {
   const t = useTranslations("Home.cta");
   return (
     <section className="relative isolate flex min-h-[60dvh] items-center overflow-hidden bg-brand-soft py-24 text-center text-zinc-950">
-      <div aria-hidden className="absolute -top-40 -left-40 -z-10 size-[28rem] rounded-full bg-brand-muted" />
-      <div aria-hidden className="absolute -right-40 -bottom-40 -z-10 size-[28rem] rounded-full bg-brand-muted" />
+      <div aria-hidden className="absolute -top-48 -left-48 -z-10 size-[36rem] rounded-full bg-gradient-to-br from-orange-200/80 via-brand-muted to-transparent blur-3xl" />
+      <div aria-hidden className="absolute -right-48 -bottom-48 -z-10 size-[36rem] rounded-full bg-gradient-to-tl from-amber-200/70 via-brand-muted to-transparent blur-3xl" />
+      <div aria-hidden className="grain pointer-events-none absolute inset-0 -z-10 opacity-[0.05] mix-blend-multiply" />
       <div className={CONTAINER}>
-        <h2 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight text-balance sm:text-5xl">{t("title")}</h2>
-        <Link
-          href="/editor"
-          className={buttonClass({ size: "lg" }, "mt-10 shadow-lg shadow-brand/25")}
-        >
-          {t("button")}
-          <ArrowRightIcon />
-        </Link>
+        <Reveal>
+          <h2 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight text-balance sm:text-5xl">{t("title")}</h2>
+        </Reveal>
+        <Reveal delay={120}>
+          <Link
+            href="/editor"
+            className={buttonClass({ size: "lg" }, "mt-10 shadow-lg shadow-brand/25")}
+          >
+            {t("button")}
+            <ArrowRightIcon />
+          </Link>
+        </Reveal>
       </div>
     </section>
   );

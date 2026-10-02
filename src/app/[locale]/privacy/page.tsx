@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
+import { PageShell } from "@/components/site/page-shell";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/privacy">): Promise<Metadata> {
   const { locale } = await params;
@@ -15,7 +16,8 @@ export default async function PrivacyPage({ params }: PageProps<"/[locale]/priva
   return (
     <>
       <SiteHeader backHome />
-      <main className="mx-auto w-full max-w-2xl flex-1 px-4 pt-28 pb-16 sm:px-6">
+      <PageShell>
+        <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center px-4 pt-28 pb-16 sm:px-6">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-950">{t("title")}</h1>
         <p className="mt-2 text-sm text-zinc-500">{t("updated")}</p>
         <div className="mt-8 space-y-4 leading-relaxed text-zinc-700">
@@ -23,7 +25,8 @@ export default async function PrivacyPage({ params }: PageProps<"/[locale]/priva
             <p key={k}>{t(k)}</p>
           ))}
         </div>
-      </main>
+        </main>
+      </PageShell>
       <SiteFooter />
     </>
   );
