@@ -7,10 +7,10 @@ const variants = {
 } as const;
 
 const sizes = {
-  sm: "h-8 gap-1.5 rounded-lg px-3 text-sm",
-  md: "h-10 gap-2 rounded-lg px-4 text-sm",
-  lg: "h-12 gap-2 rounded-xl px-6 text-base",
-  icon: "size-8 rounded-lg",
+  sm: "h-8 gap-1.5 rounded-full px-3 text-sm",
+  md: "h-10 gap-2 rounded-full px-4 text-sm",
+  lg: "h-12 gap-2 rounded-full px-6 text-base",
+  icon: "size-8 rounded-full",
 } as const;
 
 export type ButtonStyleProps = { variant?: keyof typeof variants; size?: keyof typeof sizes };

@@ -15,7 +15,7 @@ export default async function TermsPage({ params }: PageProps<"/[locale]/terms">
   return (
     <>
       <SiteHeader backHome />
-      <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-16 sm:px-6">
+      <main className="mx-auto w-full max-w-2xl flex-1 px-4 pt-28 pb-16 sm:px-6">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-950">{t("title")}</h1>
         <p className="mt-2 text-sm text-zinc-500">{t("updated")}</p>
         <div className="mt-8 space-y-4 leading-relaxed text-zinc-700">

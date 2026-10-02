@@ -13,7 +13,7 @@ export default async function EditorPage({ params }: PageProps<"/[locale]/editor
   setRequestLocale(locale);
   return (
     <div className="flex h-dvh flex-col">
-      <SiteHeader showCta={false} backHome wide className="relative" />
+      <SiteHeader showCta={false} backHome wide pill={false} className="relative" />
       <main className="flex min-h-0 flex-1 flex-col">
         <EditorLoader />
       </main>

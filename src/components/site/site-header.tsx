@@ -35,60 +35,73 @@ export function SiteHeader({
   showCta = true,
   backHome = false,
   wide = false,
+  pill = true,
   className,
 }: {
   showCta?: boolean;
   backHome?: boolean;
   wide?: boolean;
+  pill?: boolean;
   className?: string;
 }) {
   const t = useTranslations("Nav");
-  return (
-    <header
-      className={cn(
-        "sticky top-0 z-40 w-full border-b border-zinc-200 bg-white",
-        className,
-      )}
-    >
-      <div
-        className={cn(
-          "flex h-14 w-full items-center justify-between gap-4",
-          wide ? "px-3 sm:px-4" : "px-5 sm:px-8 lg:px-12",
+  const content = (
+    <>
+      <Logo />
+      <nav className="flex shrink-0 items-center gap-0.5 sm:gap-2">
+        {backHome && (
+          <Link href="/" className={buttonClass({ variant: "outline", size: "sm" }, "mr-1 px-2.5 sm:mr-0 sm:px-3")}>
+            <ArrowLeftIcon />
+            {t("home")}
+          </Link>
         )}
-      >
-        <Logo />
-        <nav className="flex shrink-0 items-center gap-0.5 sm:gap-2">
-          {backHome && (
-            <Link href="/" className={buttonClass({ variant: "outline", size: "sm" }, "mr-1 px-2.5 sm:mr-0 sm:px-3")}>
-              <ArrowLeftIcon />
-              {t("home")}
-            </Link>
+        <Link
+          href="/privacy"
+          className={buttonClass({ variant: "ghost", size: "sm" }, "hidden px-1.5 sm:px-3 md:inline-flex")}
+        >
+          {t("privacy")}
+        </Link>
+        <Link
+          href="/terms"
+          className={buttonClass({ variant: "ghost", size: "sm" }, "hidden px-1.5 sm:px-3 md:inline-flex")}
+        >
+          {t("terms")}
+        </Link>
+        <Link
+          href="/about"
+          className={buttonClass({ variant: "ghost", size: "sm" }, "hidden px-1.5 sm:px-3 md:inline-flex")}
+        >
+          {t("about")}
+        </Link>
+        <LanguageSwitcher />
+        {showCta && !pill && (
+          <Link href="/editor" className={buttonClass({ size: "sm" }, "ml-1 px-2.5 sm:ml-0 sm:px-3")}>
+            {t("start")}
+          </Link>
+        )}
+      </nav>
+    </>
+  );
+
+  if (!pill) {
+    return (
+      <header className={cn("sticky top-0 z-40 w-full border-b border-zinc-200 bg-white", className)}>
+        <div
+          className={cn(
+            "flex h-14 w-full items-center justify-between gap-4",
+            wide ? "px-3 sm:px-4" : "px-5 sm:px-8 lg:px-12",
           )}
-          <Link
-            href="/privacy"
-            className={buttonClass({ variant: "ghost", size: "sm" }, "hidden px-1.5 sm:px-3 md:inline-flex")}
-          >
-            {t("privacy")}
-          </Link>
-          <Link
-            href="/terms"
-            className={buttonClass({ variant: "ghost", size: "sm" }, "hidden px-1.5 sm:px-3 md:inline-flex")}
-          >
-            {t("terms")}
-          </Link>
-          <Link
-            href="/about"
-            className={buttonClass({ variant: "ghost", size: "sm" }, "hidden px-1.5 sm:px-3 md:inline-flex")}
-          >
-            {t("about")}
-          </Link>
-          <LanguageSwitcher />
-          {showCta && (
-            <Link href="/editor" className={buttonClass({ size: "sm" }, "ml-1 px-2.5 sm:ml-0 sm:px-3")}>
-              {t("start")}
-            </Link>
-          )}
-        </nav>
+        >
+          {content}
+        </div>
+      </header>
+    );
+  }
+
+  return (
+    <header className={cn("fixed inset-x-0 top-6 z-40 w-full px-5 sm:px-8 lg:px-12", className)}>
+      <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between gap-2 rounded-2xl border border-zinc-200/80 bg-white px-3 shadow-lg shadow-zinc-900/5 sm:px-4">
+        {content}
       </div>
     </header>
   );

@@ -22,7 +22,7 @@ export function Hero() {
   const t = useTranslations("Home.hero");
   const trust = ["noSignup", "local", "ats"] as const;
   return (
-    <section id="hero" className="relative isolate flex min-h-[calc(100dvh-3.5rem)] items-center overflow-hidden bg-brand-soft">
+    <section id="hero" className="relative isolate flex min-h-dvh items-center overflow-hidden bg-brand-soft">
       <div aria-hidden className="absolute -top-40 -left-40 -z-10 size-[28rem] rounded-full bg-brand-muted" />
       <div aria-hidden className="absolute -right-40 -bottom-40 -z-10 size-[28rem] rounded-full bg-brand-muted" />
       <div className={cn(CONTAINER, "fade-in py-20 text-center")}>
