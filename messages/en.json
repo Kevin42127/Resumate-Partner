@@ -1,0 +1,192 @@
+{
+  "Meta": {
+    "siteName": "Resumate Partner",
+    "title": "Resumate Partner | A modern, minimal resume builder that exports Word",
+    "description": "Fill in a form, preview live, and download an editable Word (.docx) resume. No sign-up, your data stays in your browser, and the clean layout is ATS-friendly.",
+    "editorTitle": "Edit resume",
+    "privacyTitle": "Privacy",
+    "termsTitle": "Terms of Service",
+    "aboutTitle": "About"
+  },
+  "Nav": {
+    "start": "Get started",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "about": "About",
+    "language": "Language",
+    "home": "Home"
+  },
+  "Home": {
+    "hero": {
+      "badge": "No sign-up · Free · Nothing uploaded",
+      "title": "A clean resume in 3 minutes. <hl>Download Word, edit anytime.</hl>",
+      "subtitle": "Fill in the form, watch the live preview, and download a .docx. Unlike a PDF, you can fine-tune every word in Word.",
+      "cta": "Start now — no sign-up",
+      "trust": { "noSignup": "No sign-up", "local": "Nothing uploaded", "ats": "ATS-friendly" }
+    },
+    "features": {
+      "title": "Why Resumate Partner",
+      "word": { "title": "An editable Word file", "desc": "A native .docx with real paragraphs, bullet lists and heading styles, so you can tweak it before applying." },
+      "private": { "title": "No account, data stays local", "desc": "Everything is stored in your browser and the Word file is generated there too. Nothing is sent to a server." },
+      "ats": { "title": "Clean and ATS-friendly", "desc": "Single column, no tables or icons. Applicant tracking systems read it correctly and recruiters scan it fast." }
+    },
+    "steps": {
+      "title": "Done in three steps",
+      "fill": { "title": "Fill in", "desc": "Add your details, experience, skills and summary." },
+      "preview": { "title": "Preview live", "desc": "An A4 page on the right shows the final look instantly." },
+      "download": { "title": "Download Word", "desc": "Get a .docx in one click and polish it in Word." }
+    },
+    "faq": {
+      "title": "FAQ",
+      "why": { "q": "Why Word instead of PDF?", "a": "PDFs are hard to edit once downloaded. A Word file lets you tailor your resume for each role, and many employers accept or require .docx." },
+      "data": { "q": "Where is my data stored?", "a": "Only in this browser (localStorage). There is no server database and we never collect resume content. Use “Export JSON” to back up or move to another computer." },
+      "jobsite": { "q": "Can I use it on job boards?", "a": "Yes. Upload the .docx as an attachment, or copy and paste its content into application forms." },
+      "pages": { "q": "Are page breaks the same as in the preview?", "a": "Close, but Word decides the final page breaks. The dashed lines in the preview only mark A4 page positions." },
+      "wordMarks": { "q": "Why is there a small square next to headings like Education in Word?", "a": "That’s Word’s “keep with next” marker. It only shows while formatting marks (¶) are visible, never prints, and won’t appear in a saved PDF. It just keeps each heading attached to the content below it." }
+    },
+    "cta": {
+      "title": "Start your next resume now",
+      "button": "Get started"
+    }
+  },
+  "Footer": {
+    "rights": "© {year} Resumate Partner"
+  },
+  "Editor": {
+    "toolbar": {
+      "resumeLocale": "Resume language",
+      "zh": "中文履歷",
+      "en": "English",
+      "import": "Import JSON",
+      "export": "Export JSON",
+      "clear": "Clear data",
+      "clearConfirm": "Clear all resume data? This cannot be undone. Consider exporting a JSON backup first.",
+      "download": "Download .docx",
+      "downloading": "Generating…",
+      "downloadError": "Download failed. Please try again.",
+      "importError": "Import failed: invalid file ({detail})",
+      "importSuccess": "Imported",
+      "iosHint": "On iPhone/iPad the file opens in a preview first — tap Share → Save to Files.",
+      "saving": "Saving…",
+      "saved": "Saved automatically",
+      "loadSample": "Load example",
+      "loadSampleConfirm": "Load sample data? Your current data will be overwritten.",
+      "more": "More"
+    },
+    "tabs": { "edit": "Edit", "preview": "Preview" },
+    "previewNote": "Split into A4 pages; Word decides the final layout.",
+    "zoomIn": "Zoom in",
+    "zoomFit": "Fit width",
+    "welcome": {
+      "title": "Welcome to Resumate Partner",
+      "desc": "Start from an example or from scratch? Your data is saved automatically in this browser.",
+      "sample": "Load example",
+      "blank": "Start blank"
+    },
+    "steps": {
+      "basics": "Basics",
+      "education": "Education",
+      "work": "Experience",
+      "projects": "Projects",
+      "skills": "Skills",
+      "certLang": "Certs / Languages",
+      "autobiography": "About me"
+    },
+    "layout": {
+      "title": "Section order & visibility",
+      "desc": "Drag to reorder sections. Click the eye icon to hide a section."
+    },
+    "sections": {
+      "work": "Experience",
+      "education": "Education",
+      "projects": "Projects",
+      "skills": "Skills",
+      "certificates": "Certifications",
+      "languages": "Languages",
+      "autobiography": "About me"
+    },
+    "actions": {
+      "add": "Add",
+      "remove": "Remove",
+      "drag": "Drag to reorder",
+      "show": "Show section",
+      "hide": "Hide section",
+      "expand": "Expand",
+      "collapse": "Collapse",
+      "untitled": "(Untitled)",
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    },
+    "fields": {
+      "name": "Full name",
+      "title": "Job title / objective",
+      "phone": "Phone",
+      "email": "Email",
+      "location": "Location",
+      "links": "Links",
+      "linkLabel": "Label",
+      "linkUrl": "URL",
+      "desiredPosition": "Desired position (optional)",
+      "desiredSalary": "Expected salary (optional)",
+      "school": "School",
+      "field": "Field of study",
+      "degree": "Degree",
+      "company": "Company",
+      "position": "Title",
+      "workLocation": "Location",
+      "projectName": "Project name",
+      "role": "Role",
+      "link": "Link",
+      "start": "Start",
+      "end": "End",
+      "current": "Present",
+      "date": "Date",
+      "description": "Description",
+      "descriptionHint": "Each line becomes a bullet point",
+      "group": "Category",
+      "items": "Skills",
+      "itemsHint": "Separate with commas",
+      "certName": "Certification",
+      "issuer": "Issuer",
+      "language": "Language",
+      "level": "Proficiency",
+      "autobiography": "About me",
+      "autobiographyHint": "Each line becomes a paragraph"
+    },
+    "placeholders": {
+      "name": "Ming Wang",
+      "title": "Senior Frontend Engineer",
+      "month": "YYYY-MM",
+      "description": "Led a design system rebuild, increasing reuse by 40%",
+      "items": "React, TypeScript, Next.js",
+      "level": "Professional (TOEIC 885)"
+    }
+  },
+  "Privacy": {
+    "title": "Privacy",
+    "updated": "Last updated: October 2026",
+    "p1": "Resumate Partner requires no sign-up and has no accounts or server-side database.",
+    "p2": "Everything you enter is stored only in this browser’s localStorage. The Word file is generated in your browser as well and is never uploaded to our servers.",
+    "p3": "Clearing your browser data or clicking “Clear data” deletes this content. We recommend backing up with “Export JSON”.",
+    "p4": "We use Vercel Analytics to count anonymous page views. It uses no cookies and never records resume content."
+  },
+  "Terms": {
+    "title": "Terms of Service",
+    "updated": "Last updated: October 2026",
+    "p1": "Resumate Partner is a free resume tool provided “as is”, without warranties of any kind.",
+    "p2": "Your resume content belongs to you. Everything you enter stays in your browser, and we claim no rights to it.",
+    "p3": "You may use the generated files for any purpose, including job applications and other commercial uses.",
+    "p4": "We may change or discontinue the service at any time. Continued use means you accept the current terms."
+  },
+  "About": {
+    "title": "About",
+    "updated": "Last updated: October 2026",
+    "p1": "Resumate Partner is a small, independent tool for building clean, ATS-friendly resumes and downloading them as editable Word files.",
+    "p2": "We built it because most resume builders either lock your file behind a sign-up or only export a PDF you can’t edit. Here there are no accounts, no uploads, and no paywall.",
+    "p3": "Everything runs in your browser, and the layout is designed to be readable by both recruiters and applicant tracking systems."
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "back": "Back to home"
+  }
+}

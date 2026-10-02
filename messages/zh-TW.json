@@ -1,0 +1,192 @@
+{
+  "Meta": {
+    "siteName": "Resumate Partner",
+    "title": "Resumate Partner｜免註冊、下載 Word 的現代簡約履歷產生器",
+    "description": "填寫表單、即時預覽，一鍵下載可再編輯的 Word（.docx）履歷。免註冊，資料只存在你的瀏覽器，版面簡潔對 ATS 友善。",
+    "editorTitle": "編輯履歷",
+    "privacyTitle": "隱私說明",
+    "termsTitle": "服務條款",
+    "aboutTitle": "關於"
+  },
+  "Nav": {
+    "start": "開始製作",
+    "privacy": "隱私說明",
+    "terms": "服務條款",
+    "about": "關於",
+    "language": "語言",
+    "home": "回到首頁"
+  },
+  "Home": {
+    "hero": {
+      "badge": "免註冊・免費・資料不上傳",
+      "title": "3 分鐘做出整潔履歷 <hl>下載 Word 隨時再改</hl>",
+      "subtitle": "填寫表單、右側即時預覽，一鍵下載 .docx。和 PDF 不同，你可以在 Word 裡自由微調每個字。",
+      "cta": "立即開始（免註冊）",
+      "trust": { "noSignup": "免註冊", "local": "資料不上傳", "ats": "對 ATS 友善" }
+    },
+    "features": {
+      "title": "為什麼選擇 Resumate Partner",
+      "word": { "title": "可再編輯的 Word 檔", "desc": "輸出原生 .docx，段落、項目符號、標題樣式一應俱全，投遞前還能自己改。" },
+      "private": { "title": "免註冊，資料只在你的瀏覽器", "desc": "所有內容都存在本機，Word 檔也在瀏覽器裡產生，不會傳到任何伺服器。" },
+      "ats": { "title": "簡潔版面，對 ATS 友善", "desc": "單欄排版、不用表格與圖示，求職系統能正確讀取，招募人員也一眼看懂。" }
+    },
+    "steps": {
+      "title": "三個步驟完成",
+      "fill": { "title": "填寫資料", "desc": "依序填寫基本資料、經歷、技能與自傳。" },
+      "preview": { "title": "即時預覽", "desc": "右側 A4 紙張即時呈現最終樣式。" },
+      "download": { "title": "下載 Word", "desc": "一鍵下載 .docx，用 Word 開啟再微調。" }
+    },
+    "faq": {
+      "title": "常見問題",
+      "why": { "q": "為什麼是 Word，不是 PDF？", "a": "PDF 下載後就很難修改。Word 檔讓你針對不同職缺微調內容，很多公司與人力銀行也接受或要求 Word 格式。" },
+      "data": { "q": "我的資料存在哪裡？", "a": "只存在你目前使用的瀏覽器（localStorage）。我們沒有伺服器資料庫，也不會收集履歷內容。換電腦時可以用「匯出 JSON」備份再匯入。" },
+      "jobsite": { "q": "104、1111 可以用嗎？", "a": "可以。下載的 .docx 可以直接上傳為附件履歷，或複製內容貼到人力銀行的表單中。" },
+      "pages": { "q": "預覽和 Word 的分頁一樣嗎？", "a": "大致相同，但實際分頁以 Word 為準。預覽中的虛線只是 A4 頁面位置的參考。" },
+      "wordMarks": { "q": "Word 裡學歷、經歷這些藍色標題旁的小方塊是什麼？", "a": "那是 Word 的「與下段同頁」標記，只在開啟格式標記（¶）時顯示，不會印在紙上，另存 PDF 也不會出現。它讓標題不會單獨留在頁面底部，屬於正常現象。" }
+    },
+    "cta": {
+      "title": "現在就開始你的下一份履歷",
+      "button": "立即開始"
+    }
+  },
+  "Footer": {
+    "rights": "© {year} Resumate Partner"
+  },
+  "Editor": {
+    "toolbar": {
+      "resumeLocale": "履歷語言",
+      "zh": "中文履歷",
+      "en": "English",
+      "import": "匯入 JSON",
+      "export": "匯出 JSON",
+      "clear": "清除資料",
+      "clearConfirm": "確定要清除所有履歷資料嗎？此動作無法復原，建議先匯出 JSON 備份。",
+      "download": "下載 .docx",
+      "downloading": "產生中…",
+      "downloadError": "下載失敗，請再試一次。",
+      "importError": "匯入失敗：檔案格式不正確（{detail}）",
+      "importSuccess": "匯入成功",
+      "iosHint": "iPhone／iPad 會先開啟預覽，請點「分享」→「儲存到檔案」。",
+      "saving": "儲存中…",
+      "saved": "已自動儲存",
+      "loadSample": "載入範例",
+      "loadSampleConfirm": "確定要載入範例資料嗎？目前的資料將會被覆蓋。",
+      "more": "更多"
+    },
+    "tabs": { "edit": "編輯", "preview": "預覽" },
+    "previewNote": "以 A4 分頁顯示，實際分頁以 Word 為準。",
+    "zoomIn": "放大預覽",
+    "zoomFit": "符合寬度",
+    "welcome": {
+      "title": "歡迎使用 Resumate Partner",
+      "desc": "要從範例開始，還是空白開始？資料會自動儲存在這個瀏覽器中。",
+      "sample": "載入範例",
+      "blank": "空白開始"
+    },
+    "steps": {
+      "basics": "基本資料",
+      "education": "學歷",
+      "work": "工作經歷",
+      "projects": "專案",
+      "skills": "技能",
+      "certLang": "證照／語言",
+      "autobiography": "自傳"
+    },
+    "layout": {
+      "title": "區塊順序與顯示",
+      "desc": "拖曳調整履歷中的區塊順序，點眼睛圖示可隱藏區塊。"
+    },
+    "sections": {
+      "work": "工作經歷",
+      "education": "學歷",
+      "projects": "專案經歷",
+      "skills": "專業技能",
+      "certificates": "證照",
+      "languages": "語言能力",
+      "autobiography": "自傳"
+    },
+    "actions": {
+      "add": "新增",
+      "remove": "刪除",
+      "drag": "拖曳排序",
+      "show": "顯示區塊",
+      "hide": "隱藏區塊",
+      "expand": "展開",
+      "collapse": "收合",
+      "untitled": "（未命名）",
+      "cancel": "取消",
+      "confirm": "確定"
+    },
+    "fields": {
+      "name": "姓名",
+      "title": "職稱／求職目標",
+      "phone": "電話",
+      "email": "Email",
+      "location": "居住地",
+      "links": "個人連結",
+      "linkLabel": "名稱",
+      "linkUrl": "網址",
+      "desiredPosition": "期望職務（選填）",
+      "desiredSalary": "期望薪資（選填）",
+      "school": "學校",
+      "field": "科系",
+      "degree": "學位",
+      "company": "公司",
+      "position": "職稱",
+      "workLocation": "地點",
+      "projectName": "專案名稱",
+      "role": "角色",
+      "link": "連結",
+      "start": "開始",
+      "end": "結束",
+      "current": "至今",
+      "date": "取得日期",
+      "description": "描述",
+      "descriptionHint": "每一行會成為一個項目符號",
+      "group": "分類",
+      "items": "技能",
+      "itemsHint": "以逗號或頓號分隔",
+      "certName": "證照名稱",
+      "issuer": "發證單位",
+      "language": "語言",
+      "level": "程度",
+      "autobiography": "自傳內容",
+      "autobiographyHint": "每一行會成為一個段落"
+    },
+    "placeholders": {
+      "name": "王小明",
+      "title": "資深前端工程師",
+      "month": "YYYY-MM",
+      "description": "主導設計系統重構，元件重用率提升 40%",
+      "items": "React、TypeScript、Next.js",
+      "level": "TOEIC 885"
+    }
+  },
+  "Privacy": {
+    "title": "隱私說明",
+    "updated": "最後更新：2026 年 10 月",
+    "p1": "Resumate Partner 不需要註冊，也沒有會員系統或伺服器資料庫。",
+    "p2": "你填寫的履歷內容只會儲存在你目前使用的瀏覽器 localStorage 中，Word 檔也是在你的瀏覽器裡產生，不會上傳到我們的伺服器。",
+    "p3": "清除瀏覽器資料或按下「清除資料」就會刪除這些內容。建議定期使用「匯出 JSON」備份。",
+    "p4": "我們使用 Vercel Analytics 統計匿名的頁面瀏覽次數，不使用 Cookie，也不會記錄任何履歷內容。"
+  },
+  "Terms": {
+    "title": "服務條款",
+    "updated": "最後更新：2026 年 10 月",
+    "p1": "Resumate Partner 為免費履歷工具，以「現狀」提供，不做任何明示或默示的保證。",
+    "p2": "你的履歷內容完全屬於你。所有資料只儲存在你的瀏覽器中，我們不對其主張任何權利。",
+    "p3": "你可以將產生的檔案用於任何用途，包括求職投遞與其他商業用途。",
+    "p4": "我們可能隨時調整或停止本服務。繼續使用即表示接受當時版本的條款。"
+  },
+  "About": {
+    "title": "關於",
+    "updated": "最後更新：2026 年 10 月",
+    "p1": "Resumate Partner 是一個獨立開發的履歷工具，讓你快速做出簡潔、對 ATS 友善、可下載 Word 再編輯的履歷。",
+    "p2": "做這個工具的原因很單純：多數履歷產生器不是要求註冊，就是只能輸出無法再編輯的 PDF。這裡免註冊、不上傳、不收費。",
+    "p3": "所有運算都在你的瀏覽器完成，版面設計同時兼顧招募人員快速掃讀與求職系統正確解析。"
+  },
+  "NotFound": {
+    "title": "找不到這個頁面",
+    "back": "回到首頁"
+  }
+}

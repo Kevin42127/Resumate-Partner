@@ -1,0 +1,31 @@
+import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { SiteFooter } from "@/components/site/site-footer";
+import { SiteHeader } from "@/components/site/site-header";
+
+export async function generateMetadata({ params }: PageProps<"/[locale]/terms">): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Meta" });
+  return { title: t("termsTitle"), alternates: { canonical: `/${locale}/terms` } };
+}
+
+export default async function TermsPage({ params }: PageProps<"/[locale]/terms">) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "Terms" });
+  return (
+    <>
+      <SiteHeader backHome />
+      <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-16 sm:px-6">
+        <h1 className="text-3xl font-bold tracking-tight text-zinc-950">{t("title")}</h1>
+        <p className="mt-2 text-sm text-zinc-500">{t("updated")}</p>
+        <div className="mt-8 space-y-4 leading-relaxed text-zinc-700">
+          {(["p1", "p2", "p3", "p4"] as const).map((k) => (
+            <p key={k}>{t(k)}</p>
+          ))}
+        </div>
+      </main>
+      <SiteFooter />
+    </>
+  );
+}
