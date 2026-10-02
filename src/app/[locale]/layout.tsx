@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
     description: t("description"),
     applicationName: t("siteName"),
     manifest: "/site.webmanifest",
+    verification: { google: "ikA4eMUhLTjnxBSzCa1RpgmEg5SL_scysFac4hD4b-k" },
     icons: {
       icon: [
         { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
