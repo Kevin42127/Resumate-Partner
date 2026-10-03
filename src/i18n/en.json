@@ -293,6 +293,96 @@
             "p": ["Tip: tailor your resume for each opening — use \"Duplicate\" in the editor to keep a version per job instead of sending one resume everywhere."]
           }
         ]
+      },
+      "vs-platforms": {
+        "title": "How is Resumate Partner different from Cake, Canva, and other platforms?",
+        "desc": "No signup, nothing uploaded, and an editable Word file — how Resumate Partner compares to mainstream resume platforms.",
+        "date": "2026-10-03",
+        "body": [
+          {
+            "p": ["Resumate Partner often gets compared to Cake, Canva, or the resume builders inside job sites — but they're actually different things. It's closer to a \"privacy-first Word resume generator\": no account, no upload, and you get a .docx you can keep editing. Here's an honest breakdown to help you pick the right tool for your situation."]
+          },
+          {
+            "h": "Where Resumate Partner is different",
+            "table": {
+              "head": ["Aspect", "Resumate Partner", "Mainstream platforms"],
+              "rows": [
+                ["Output format", "Native .docx — keep tweaking in Word after you send it", "Mostly PDF-only; editing means going back to the platform, and some charge for downloads"],
+                ["Privacy", "Data never leaves your browser — zero server contact", "Your name, phone, and history live in their database"],
+                ["Getting started", "No signup, just open and type", "Usually requires an account — and many only reveal the paywall after you've finished"],
+                ["Cost", "Completely free", "Free tiers often add watermarks or limit templates and downloads"],
+                ["Data ownership", "Export/import JSON — back it up, take it anywhere", "Your data is tied to your account and their policy changes"]
+              ]
+            }
+          },
+          {
+            "h": "Where platforms are stronger",
+            "table": {
+              "head": ["Aspect", "Resumate Partner", "Mainstream platforms"],
+              "rows": [
+                ["Template variety", "Deliberately one ATS-friendly single-column layout", "Dozens to hundreds of design templates"],
+                ["Ecosystem", "Just a document tool", "Direct job listings, one-click apply, employer search"],
+                ["Visibility", "Your resume doesn't exist until you send it", "Headhunters and HR can find your resume on the platform"],
+                ["AI assistance", "Rule-based resume health check", "Most platforms now offer AI-written summaries and bullet rewrites"],
+                ["Across devices", "Tied to one browser; move data via JSON", "Account sync across phone and desktop"]
+              ]
+            }
+          },
+          {
+            "h": "When Resumate Partner is the right pick",
+            "p": [
+              "A good fit if: you'd rather not create an account, don't want your personal data on a third party's servers, need a Word file you can keep editing, or want an English resume from a Chinese-language UI for overseas applications.",
+              "Not a great fit if: you want flashy design templates, want your resume discoverable by recruiters on a platform, or want AI to write the content for you — platforms do those things better."
+            ]
+          },
+          {
+            "p": ["The two aren't mutually exclusive: build a clean Word resume here first, then upload it to 104 or Cake. Get your own file first — decide later whether to hand your data to a platform."]
+          }
+        ]
+      },
+      "why-resumate": {
+        "title": "Why build yet another resume tool?",
+        "desc": "The motivation and the decisions — why no signup, why Word instead of PDF, and why your data never leaves the browser.",
+        "date": "2026-10-03",
+        "body": [
+          {
+            "p": [
+              "There are already plenty of resume builders — so why make another one? Because two pain points kept showing up while job hunting: nearly every tool asks you to register first (so your name, phone number, and work history end up on someone else's server), and most only export PDF — meaning one typo fix means going back to the platform and re-exporting.",
+              "Resumate Partner is the answer to those two things: no signup, no upload, and a Word file you can keep editing. This post records the key decisions and what they cost."
+            ]
+          },
+          {
+            "h": "Decision 1: your data never leaves the browser",
+            "p": [
+              "All resume data lives in the browser's localStorage — the server never sees a single field. No account system, no database, and therefore no \"data retained or leaked by the platform\" problem.",
+              "The trade-off is explicit: data is bound to one browser, so switching devices means exporting a JSON backup by hand, and clearing browser data wipes it. For the \"writing a resume\" use case, we believe privacy is worth more than sync convenience."
+            ]
+          },
+          {
+            "h": "Decision 2: Word output, not PDF",
+            "p": [
+              "Most tools export PDF because it's easy — render once and done. But resumes always need one last tweak before sending, and a Word file lets you keep editing after download.",
+              "Technically we emit native .docx structures: real paragraphs, real bullet numbering, tab stops, and heading styles — not a picture or a table pretending to be a resume. It edits naturally in Word and parses correctly in ATS systems."
+            ]
+          },
+          {
+            "h": "Decision 3: exactly one layout",
+            "p": [
+              "Deliberately no template picker. Single column, clear heading hierarchy, machine-readable structure — a design that's safe for both ATS parsing and human skimming, and it saves you from half an hour of template indecision.",
+              "The cost: people who want flashy design will be disappointed. But if you're applying to roles screened by an ATS, a clean layout is the right answer anyway."
+            ]
+          },
+          {
+            "h": "Decision 4: UI language ≠ resume language",
+            "p": [
+              "The site UI language and the resume's content language are separate settings — you can build an English resume from a Chinese interface. For anyone applying to multinational or overseas roles, that's essential: fill things out fast in your native language, output in the language the recruiter reads.",
+              "Each resume remembers its own language setting, so a Chinese and an English resume can coexist — one version per job opening."
+            ]
+          },
+          {
+            "p": ["Put together, these trade-offs mean Resumate Partner won't be the most feature-rich resume tool — but that was never the goal. The goal is: open it, fill it in, walk away with a Word file that's yours — without handing anything over along the way."]
+          }
+        ]
       }
     }
   },

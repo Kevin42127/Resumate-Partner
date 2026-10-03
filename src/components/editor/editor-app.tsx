@@ -7,7 +7,7 @@ import { ResumePreview } from "@/components/preview/resume-preview";
 import { Button } from "@/components/ui/button";
 import { ChevronIcon } from "@/components/ui/icons";
 import { getSampleResume } from "@/lib/sample-data";
-import { createEmptyResume, type ResumeLocale, type SectionKey } from "@/lib/schema";
+import { createEmptyResume, type SectionKey } from "@/lib/schema";
 import { useResumeStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import {
@@ -165,17 +165,10 @@ function WelcomeDialog() {
 
 export default function EditorApp() {
   const t = useTranslations("Editor");
-  const uiLocale = useLocale();
   const resume = useResumeStore((s) => s.resume);
-  const setResumeLocale = useResumeStore((s) => s.setResumeLocale);
   const [open, setOpen] = useState<Record<string, boolean>>({ basics: true });
   const [active, setActive] = useState<StepKey>("basics");
   const [tab, setTab] = useState<"edit" | "preview">("edit");
-
-  const targetLocale: ResumeLocale = uiLocale === "en" ? "en" : "zh-TW";
-  useEffect(() => {
-    if (resume.meta.resumeLocale !== targetLocale) setResumeLocale(targetLocale);
-  }, [resume.meta.resumeLocale, targetLocale, setResumeLocale]);
 
   const toggle = (key: string) => setOpen((o) => ({ ...o, [key]: !o[key] }));
   const select = (key: StepKey) => {

@@ -1,7 +1,7 @@
 "use client";
 
 import { track } from "@vercel/analytics";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
@@ -61,8 +61,6 @@ function SaveIndicator() {
 export function Toolbar() {
   const t = useTranslations("Editor.toolbar");
   const tAction = useTranslations("Editor.actions");
-  const uiLocale = useLocale();
-  const locale = uiLocale === "en" ? "en" : "zh-TW";
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState<Notice>(null);
   const [confirmAction, setConfirmAction] = useState<"clear" | "sample" | null>(null);
@@ -107,12 +105,14 @@ export function Toolbar() {
   };
 
   const handleClear = () => {
-    useResumeStore.getState().reset(createEmptyResume(locale));
+    const { resume } = useResumeStore.getState();
+    useResumeStore.getState().reset(createEmptyResume(resume.meta.resumeLocale));
     setConfirmAction(null);
   };
 
   const handleLoadSample = () => {
-    useResumeStore.getState().reset(getSampleResume(locale));
+    const { resume } = useResumeStore.getState();
+    useResumeStore.getState().reset(getSampleResume(resume.meta.resumeLocale));
     setConfirmAction(null);
   };
 

@@ -6,7 +6,7 @@ import { TextAreaField, TextField } from "@/components/ui/field";
 import { MonthPicker } from "@/components/ui/month-picker";
 import { EyeIcon, EyeOffIcon, PlusIcon, TrashIcon } from "@/components/ui/icons";
 import { useResumeStore } from "@/lib/store";
-import { newId, type SectionKey } from "@/lib/schema";
+import { newId, RESUME_LOCALES, type ResumeLocale, type SectionKey } from "@/lib/schema";
 import { cn } from "@/lib/utils";
 import { DateRangeFields } from "./fields";
 import { ItemList } from "./item-list";
@@ -14,16 +14,39 @@ import { DragHandle, SortableItem, SortableList } from "./sortable-list";
 
 const useT = () => useTranslations("Editor");
 
+const LOCALE_LABEL: Record<ResumeLocale, "toolbar.zh" | "toolbar.en"> = { "zh-TW": "toolbar.zh", en: "toolbar.en" };
+
 export function BasicsForm() {
   const t = useT();
   const basics = useResumeStore((s) => s.resume.basics);
   const setBasics = useResumeStore((s) => s.setBasics);
+  const resumeLocale = useResumeStore((s) => s.resume.meta.resumeLocale);
+  const setResumeLocale = useResumeStore((s) => s.setResumeLocale);
   const text = (key: "name" | "title" | "phone" | "email" | "location" | "desiredPosition" | "desiredSalary", extra?: object) => (
     <TextField label={t(`fields.${key}`)} value={basics[key]} onValueChange={(v) => setBasics({ [key]: v })} {...extra} />
   );
 
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      <div className="flex flex-col gap-1.5 sm:col-span-2">
+        <span className="text-xs font-medium text-zinc-600">{t("toolbar.resumeLocale")}</span>
+        <div role="group" className="flex w-fit items-center gap-1 rounded-full border border-zinc-200 bg-white p-1">
+          {RESUME_LOCALES.map((l) => (
+            <button
+              key={l}
+              type="button"
+              aria-pressed={resumeLocale === l}
+              onClick={() => setResumeLocale(l)}
+              className={cn(
+                "cursor-pointer rounded-full px-3 py-1 text-sm font-medium transition-colors",
+                resumeLocale === l ? "bg-brand text-white shadow-sm shadow-brand/30" : "text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800",
+              )}
+            >
+              {t(LOCALE_LABEL[l])}
+            </button>
+          ))}
+        </div>
+      </div>
       {text("name", { placeholder: t("placeholders.name"), autoComplete: "name" })}
       {text("title", { placeholder: t("placeholders.title"), autoComplete: "organization-title" })}
       {text("phone", { type: "tel", autoComplete: "tel" })}

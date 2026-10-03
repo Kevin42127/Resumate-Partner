@@ -42,6 +42,39 @@ export default async function PostPage({ params }: PageProps<"/[locale]/blog/[sl
                     {paragraph}
                   </p>
                 ))}
+                {section.table && (
+                  <div className="mt-4 overflow-x-auto rounded-xl border border-zinc-200">
+                    <table className="w-full text-left text-sm">
+                      <thead>
+                        <tr className="border-b border-brand bg-brand">
+                          {section.table.head.map((cell) => (
+                            <th key={cell} className="px-4 py-2.5 font-medium whitespace-nowrap text-white">
+                              {cell}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {section.table.rows.map((row, i) => (
+                          <tr key={i} className="border-b border-zinc-100 last:border-0">
+                            {row.map((cell, j) => (
+                              <td
+                                key={j}
+                                className={
+                                  j === 0
+                                    ? "px-4 py-2.5 align-top font-medium whitespace-nowrap text-zinc-900"
+                                    : "px-4 py-2.5 align-top leading-relaxed text-zinc-600"
+                                }
+                              >
+                                {cell}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
                 {section.sites && (
                   <ul className="mt-4 space-y-3">
                     {section.sites.map((site) => (
