@@ -136,15 +136,15 @@ export function SiteHeader({
 
   return (
     <header className={cn("fixed inset-x-0 top-6 z-40 w-full px-5 sm:px-8 lg:px-12", className)}>
-      <div ref={menuRef} className="relative mx-auto w-full max-w-7xl">
-        <div className="flex h-14 w-full items-center justify-between gap-2 rounded-2xl border border-zinc-200/80 bg-white px-3 shadow-lg shadow-zinc-900/5 sm:px-4">
+      <div ref={menuRef} className="relative mx-auto w-fit">
+        <div className="flex h-14 items-center justify-between gap-4 rounded-2xl border border-zinc-200/80 bg-white px-3 shadow-lg shadow-zinc-900/5 sm:gap-8 sm:px-4">
           {content}
         </div>
         {menu !== "closed" && (
           <nav
             onAnimationEnd={() => setMenu((s) => (s === "closing" ? "closed" : s))}
             className={cn(
-              "absolute inset-x-0 top-full z-50 mt-2 flex flex-col gap-0.5 rounded-2xl border border-zinc-200/80 bg-white p-2 shadow-lg shadow-zinc-900/5 md:hidden",
+              "absolute right-0 top-full z-50 mt-2 flex w-56 flex-col gap-0.5 rounded-2xl border border-zinc-200/80 bg-white p-2 shadow-lg shadow-zinc-900/5 md:hidden",
               menu === "closing" ? "menu-out" : "menu-in",
             )}
           >
