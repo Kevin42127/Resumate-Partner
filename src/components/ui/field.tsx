@@ -2,6 +2,7 @@
 
 import { useId } from "react";
 import { cn } from "@/lib/utils";
+import { Checkbox } from "./checkbox";
 
 const controlClass =
   "w-full rounded-lg border border-zinc-200 bg-white px-3 text-sm text-zinc-900 shadow-xs transition-colors placeholder:text-zinc-400 hover:border-zinc-300 focus:border-brand focus:ring-2 focus:ring-brand/15 focus:outline-none disabled:bg-zinc-50 disabled:text-zinc-400";
@@ -82,19 +83,21 @@ export function CheckboxField({
   label,
   checked,
   onCheckedChange,
+  className,
 }: {
   label: string;
   checked: boolean;
   onCheckedChange: (v: boolean) => void;
+  className?: string;
 }) {
   return (
-    <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-zinc-700 select-none">
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={(e) => onCheckedChange(e.target.checked)}
-        className="size-4 cursor-pointer rounded border-zinc-300 accent-brand"
-      />
+    <label
+      className={cn(
+        "inline-flex cursor-pointer items-center gap-2 text-sm text-zinc-700 select-none has-disabled:cursor-not-allowed has-disabled:opacity-60",
+        className,
+      )}
+    >
+      <Checkbox checked={checked} onChange={(e) => onCheckedChange(e.target.checked)} />
       {label}
     </label>
   );

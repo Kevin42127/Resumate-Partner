@@ -153,7 +153,7 @@ export function A4Page({ children, label }: { children: React.ReactNode; label?:
             style={{ width: PAGE_W * scale, height: PAGE_H * scale }}
           >
             {pages > 1 && (
-              <span className="absolute top-2 right-2 z-20 rounded bg-sky-50 px-1.5 py-0.5 text-[10px] text-sky-600 ring-1 ring-sky-200/50">
+              <span className="absolute top-2 right-2 z-20 rounded bg-zinc-50 px-1.5 py-0.5 text-[10px] text-zinc-500 ring-1 ring-zinc-200">
                 {i + 1} / {pages}
               </span>
             )}

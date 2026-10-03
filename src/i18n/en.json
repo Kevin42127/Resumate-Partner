@@ -30,7 +30,10 @@
       "title": "Why Resumate Partner",
       "word": { "title": "An editable Word file", "desc": "A native .docx with real paragraphs, bullet lists and heading styles, so you can tweak it before applying." },
       "private": { "title": "No account, data stays local", "desc": "Everything is stored in your browser and the Word file is generated there too. Nothing is sent to a server." },
-      "ats": { "title": "Clean and ATS-friendly", "desc": "Single column, no tables or icons. Applicant tracking systems read it correctly and recruiters scan it fast." }
+      "ats": { "title": "Clean and ATS-friendly", "desc": "Single column, no tables or icons. Applicant tracking systems read it correctly and recruiters scan it fast." },
+      "bilingual": { "title": "Chinese UI, English resume", "desc": "Interface and resume languages are set separately — work in Chinese and still export a complete English resume for international roles." },
+      "library": { "title": "Multiple resumes, one per job", "desc": "Add, duplicate, rename, and switch — all stored locally. Tailor a version for each role without starting over." },
+      "health": { "title": "Built-in resume checkup", "desc": "Missing fields, no quantified results, an overlong bio — issues are flagged before you hit send." }
     },
     "steps": {
       "title": "Done in three steps",

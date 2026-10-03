@@ -37,21 +37,10 @@ const STEPS = [
 
 type StepKey = (typeof STEPS)[number]["key"];
 
-const STEP_COLORS: Record<StepKey, { badge: string; bar: string }> = {
-  basics: { badge: "bg-brand text-white shadow-brand/30", bar: "bg-brand" },
-  education: { badge: "bg-sky-500 text-white shadow-sky-500/30", bar: "bg-sky-500" },
-  work: { badge: "bg-violet-500 text-white shadow-violet-500/30", bar: "bg-violet-500" },
-  projects: { badge: "bg-fuchsia-500 text-white shadow-fuchsia-500/30", bar: "bg-fuchsia-500" },
-  skills: { badge: "bg-pink-500 text-white shadow-pink-500/30", bar: "bg-pink-500" },
-  certLang: { badge: "bg-teal-500 text-white shadow-teal-500/30", bar: "bg-teal-500" },
-  autobiography: { badge: "bg-emerald-500 text-white shadow-emerald-500/30", bar: "bg-emerald-500" },
-};
-
 function Card({
   id,
   title,
   index,
-  color,
   open,
   onToggle,
   action,
@@ -60,7 +49,6 @@ function Card({
   id: string;
   title: string;
   index?: number;
-  color?: { badge: string; bar: string };
   open: boolean;
   onToggle: () => void;
   action?: React.ReactNode;
@@ -74,7 +62,7 @@ function Card({
         open && "shadow-md shadow-zinc-900/5",
       )}
     >
-      {color && open && <span aria-hidden className={cn("absolute inset-y-0 left-0 w-1", color.bar)} />}
+      {open && <span aria-hidden className="absolute inset-y-0 left-0 w-1 bg-brand" />}
       <div className="flex items-center gap-2 pr-2">
         <button
           type="button"
@@ -84,12 +72,7 @@ function Card({
           className="flex flex-1 cursor-pointer items-center gap-3 px-4 py-3.5 text-left"
         >
           {index !== undefined && (
-            <span
-              className={cn(
-                "grid size-6 place-items-center rounded-full text-xs font-semibold shadow-sm",
-                color?.badge ?? "bg-brand-soft text-brand-strong",
-              )}
-            >
+            <span className="grid size-6 place-items-center rounded-full bg-brand text-xs font-semibold text-white shadow-sm shadow-brand/30">
               {index + 1}
             </span>
           )}
@@ -131,7 +114,7 @@ function Stepper({ active, onSelect }: { active: StepKey; onSelect: (k: StepKey)
               <span
                 className={cn(
                   "block h-1 rounded-full transition-colors",
-                  i <= activeIndex ? STEP_COLORS[s.key].bar : "bg-zinc-200 group-hover:bg-zinc-300",
+                  i <= activeIndex ? "bg-brand" : "bg-zinc-200 group-hover:bg-zinc-300",
                 )}
               />
             </button>
@@ -236,7 +219,6 @@ export default function EditorApp() {
                 key={key}
                 id={`step-${key}`}
                 index={i}
-                color={STEP_COLORS[key]}
                 title={t(`steps.${key}`)}
                 open={!!open[key]}
                 onToggle={() => {
