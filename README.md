@@ -4,7 +4,7 @@
 
 - Next.js 16（App Router）+ TypeScript + Tailwind CSS v4
 - `docx` 在瀏覽器端產生 Word 檔，資料只存在 localStorage（Zustand persist），可匯入/匯出 JSON
-- next-intl：`/zh-TW`、`/en`，`src/proxy.ts` 依 `Accept-Language` 導向
+- next-intl：`/zh`、`/en`，`src/proxy.ts` 依 `Accept-Language` 導向
 - 統一設計：所有字體、字級、顏色、間距都在 `src/lib/design.ts`，預覽（`components/preview`）與 Word（`src/docx`）共用
 - 預覽與 Word 都從 `toResumeView()`（`src/lib/resume-content.ts`）取得相同的文字與順序
 

@@ -9,7 +9,7 @@ import { Menu, MenuItem } from "@/components/ui/menu";
 import { cn } from "@/lib/utils";
 
 const LABELS: Record<AppLocale, { name: string; code: string }> = {
-  "zh-TW": { name: "繁體中文", code: "ZH" },
+  zh: { name: "繁體中文", code: "ZH" },
   en: { name: "English", code: "EN" },
 };
 

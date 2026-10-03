@@ -13,6 +13,7 @@
     "privacy": "Privacy",
     "terms": "Terms",
     "about": "About",
+    "blog": "Blog",
     "language": "Language",
     "home": "Home",
     "menu": "Menu"
@@ -68,6 +69,7 @@
       "downloadError": "Download failed. Please try again.",
       "importError": "Import failed: invalid file ({detail})",
       "importSuccess": "Imported",
+      "renameSuccess": "Renamed",
       "iosHint": "On iPhone/iPad the file opens in a preview first — tap Share → Save to Files.",
       "saving": "Saving…",
       "saved": "Saved automatically",
@@ -92,11 +94,39 @@
       "projects": "Projects",
       "skills": "Skills",
       "certLang": "Certs / Languages",
-      "autobiography": "About me"
+      "autobiography": "About me",
+      "label": "Resume sections"
     },
     "layout": {
       "title": "Section order & visibility",
       "desc": "Drag to reorder sections. Click the eye icon to hide a section."
+    },
+    "library": {
+      "new": "New resume",
+      "rename": "Rename",
+      "duplicate": "Duplicate",
+      "delete": "Delete resume",
+      "untitled": "Untitled resume",
+      "copySuffix": "copy",
+      "deleteConfirm": "Delete \"{name}\"? This cannot be undone."
+    },
+    "health": {
+      "title": "Resume checkup",
+      "ok": "No issues found — your resume looks good",
+      "issues": {
+        "nameMissing": "Name is empty",
+        "emailMissing": "Email is empty",
+        "emailInvalid": "Email format looks incorrect",
+        "phoneMissing": "Phone number is empty",
+        "titleMissing": "Job title / target role is empty",
+        "linkInvalid": "A link URL looks incorrect",
+        "workEmpty": "No work experience yet — add at least one",
+        "workIncomplete": "{count} experience entries are missing company or title",
+        "workNoNumbers": "Add quantified results to experience descriptions (e.g. \"grew 20%\")",
+        "educationEmpty": "No education yet — add at least one",
+        "skillsEmpty": "No skills yet — add at least one",
+        "autobiographyLong": "About me is long ({count} chars) — aim for under 1000"
+      }
     },
     "sections": {
       "work": "Experience",
@@ -118,6 +148,13 @@
       "untitled": "(Untitled)",
       "cancel": "Cancel",
       "confirm": "Confirm"
+    },
+    "monthPicker": {
+      "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      "clear": "Clear",
+      "thisMonth": "This month",
+      "prevYear": "Previous year",
+      "nextYear": "Next year"
     },
     "fields": {
       "name": "Full name",
@@ -187,8 +224,79 @@
     "p2": "We built it because most resume builders either lock your file behind a sign-up or only export a PDF you can’t edit. Here there are no accounts, no uploads, and no paywall.",
     "p3": "Everything runs in your browser, and the layout is designed to be readable by both recruiters and applicant tracking systems."
   },
+  "Blog": {
+    "title": "Blog",
+    "back": "Back to blog",
+    "readMore": "Read more",
+    "posts": {
+      "getting-started": {
+        "title": "Tutorial: build your first resume in 3 minutes",
+        "desc": "From a blank page to an exported Word file — a full walkthrough of Resumate Partner.",
+        "date": "2026-10-03",
+        "body": [
+          {
+            "h": "Step 1: open the editor",
+            "p": ["Click \"Get started\" on the homepage. On your first visit, you can load the sample resume to see a finished example, or start blank. No sign-up, no upload — everything stays in your browser."]
+          },
+          {
+            "h": "Step 2: fill in your details",
+            "p": [
+              "The left column has seven sections: basics, education, experience, projects, skills, certifications & languages, and about me — with a live A4 preview on the right.",
+              "You don't have to fill everything. Click the eye icon next to a section to hide it — hidden sections won't appear in the exported Word file."
+            ]
+          },
+          {
+            "h": "Step 3: arrange the layout",
+            "p": ["Drag sections in the \"Section order & visibility\" panel to control their order in the resume — put your strongest experience first."]
+          },
+          {
+            "h": "Step 4: run the resume checkup",
+            "p": ["The checkup flags common issues: missing required fields, invalid email format, experience entries without company or title, descriptions without numbers, and more. Work through the list one by one."]
+          },
+          {
+            "h": "Step 5: download the Word file",
+            "p": [
+              "Click \"Download .docx\" — the output is a real Word document you can keep editing.",
+              "Want versions for different jobs? Use the resume switcher in the toolbar to add or duplicate resumes — everything stays on your device. To back up or move to another computer, use \"Export JSON\" and import it later."
+            ]
+          }
+        ]
+      },
+      "job-sites": {
+        "title": "Resume done — where to apply next?",
+        "desc": "A shortlist of job boards in Taiwan and abroad, with what each is good for.",
+        "date": "2026-10-03",
+        "body": [
+          {
+            "p": ["Once your resume is ready, the next step is sending it to the right places. Here's our shortlist of job boards — external links open in a new tab and are not affiliated with this site."]
+          },
+          {
+            "h": "Taiwan",
+            "sites": [
+              { "key": "104", "name": "104 Job Bank", "note": "Largest job board in Taiwan — the most listings across all industries" },
+              { "key": "1111", "name": "1111 Job Bank", "note": "Long-running local board; strong in traditional industries and SMEs" },
+              { "key": "cake", "name": "Cake", "note": "Startup and tech focused, with a built-in resume tool" },
+              { "key": "yourator", "name": "Yourator", "note": "Startup, digital marketing, and design roles" }
+            ]
+          },
+          {
+            "h": "International",
+            "sites": [
+              { "key": "linkedin", "name": "LinkedIn", "note": "First stop for multinational and overseas roles — keep your English resume and profile in sync" },
+              { "key": "indeed", "name": "Indeed", "note": "Global aggregator; strong on overseas and remote listings" }
+            ]
+          },
+          {
+            "p": ["Tip: tailor your resume for each opening — use \"Duplicate\" in the editor to keep a version per job instead of sending one resume everywhere."]
+          }
+        ]
+      }
+    }
+  },
   "NotFound": {
     "title": "Page not found",
-    "back": "Back to home"
+    "description": "Lost, this page is. In another system, it may be.",
+    "back": "Go back",
+    "home": "Take me home"
   }
 }

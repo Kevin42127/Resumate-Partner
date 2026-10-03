@@ -22,6 +22,7 @@ import {
   SkillsForm,
   WorkForm,
 } from "./section-forms";
+import { HealthPanel } from "./health-panel";
 import { Toolbar } from "./toolbar";
 
 const STEPS = [
@@ -110,7 +111,7 @@ function Stepper({ active, onSelect }: { active: StepKey; onSelect: (k: StepKey)
   const t = useTranslations("Editor.steps");
   const activeIndex = STEPS.findIndex((s) => s.key === active);
   return (
-    <nav aria-label="steps" className="sticky top-0 z-10 -mx-4 border-b border-zinc-200 bg-zinc-50/90 px-4 py-2.5 backdrop-blur">
+    <nav aria-label={t("label")} className="sticky top-0 z-10 -mx-4 border-b border-zinc-200 bg-zinc-50/90 px-4 py-2.5 backdrop-blur">
       <div className="mb-2 flex items-center justify-between text-xs text-zinc-500">
         <span>
           {activeIndex + 1}/{STEPS.length} · <span className="font-medium text-zinc-800">{t(active)}</span>
@@ -255,6 +256,9 @@ export default function EditorApp() {
             ))}
             <Card id="layout" title={t("layout.title")} open={!!open.layout} onToggle={() => toggle("layout")}>
               <LayoutPanel />
+            </Card>
+            <Card id="health" title={t("health.title")} open={!!open.health} onToggle={() => toggle("health")}>
+              <HealthPanel />
             </Card>
           </div>
         </div>

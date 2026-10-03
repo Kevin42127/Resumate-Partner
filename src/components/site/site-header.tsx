@@ -92,6 +92,12 @@ export function SiteHeader({
         >
           {t("about")}
         </Link>
+        <Link
+          href="/blog"
+          className={buttonClass({ variant: "ghost", size: "sm" }, "hidden px-1.5 sm:px-3 md:inline-flex")}
+        >
+          {t("blog")}
+        </Link>
         <LanguageSwitcher />
         {pill && (
           <button
@@ -162,6 +168,13 @@ export function SiteHeader({
               className={buttonClass({ variant: "ghost", size: "md" }, "w-full justify-start")}
             >
               {t("about")}
+            </Link>
+            <Link
+              href="/blog"
+              onClick={closeMenu}
+              className={buttonClass({ variant: "ghost", size: "md" }, "w-full justify-start")}
+            >
+              {t("blog")}
             </Link>
           </nav>
         )}

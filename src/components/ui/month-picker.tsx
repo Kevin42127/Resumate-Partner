@@ -1,12 +1,9 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useEffect, useId, useRef, useState } from "react";
 import { CalendarIcon, ChevronIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
-
-const MONTHS_ZH = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
-const MONTHS_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 export interface MonthPickerProps {
   label: string;
@@ -28,8 +25,8 @@ export function MonthPicker({
   className,
 }: MonthPickerProps) {
   const id = useId();
-  const locale = useLocale();
-  const months = locale === "en" ? MONTHS_EN : MONTHS_ZH;
+  const t = useTranslations("Editor.monthPicker");
+  const months = t.raw("months") as string[];
 
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -42,14 +39,6 @@ export function MonthPicker({
   const parsedMonth = value ? parseInt(value.split("-")[1], 10) : 0;
 
   const [viewYear, setViewYear] = useState(parsedYear || currentYear);
-
-  // Synchronize viewYear when value changes
-  useEffect(() => {
-    if (value) {
-      const y = parseInt(value.split("-")[0], 10);
-      if (y) setViewYear(y);
-    }
-  }, [value]);
 
   // Close on outside click or Esc
   useEffect(() => {
@@ -102,7 +91,10 @@ export function MonthPicker({
         disabled={disabled}
         aria-expanded={open}
         aria-haspopup="dialog"
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => {
+          if (!open && parsedYear) setViewYear(parsedYear);
+          setOpen((o) => !o);
+        }}
         className={cn(
           "flex h-9 w-full cursor-pointer items-center justify-between rounded-lg border border-zinc-200 bg-white px-3 text-sm shadow-xs transition-colors hover:border-zinc-300 focus:border-brand focus:ring-2 focus:ring-brand/15 focus:outline-none",
           disabled && "cursor-not-allowed bg-zinc-50 text-zinc-400 hover:border-zinc-200",
@@ -133,7 +125,7 @@ export function MonthPicker({
               type="button"
               onClick={() => setViewYear((y) => y - 1)}
               className="grid size-7 place-items-center rounded-lg text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 cursor-pointer"
-              aria-label="Previous year"
+              aria-label={t("prevYear")}
             >
               <ChevronIcon className="rotate-90 size-3.5" />
             </button>
@@ -142,7 +134,7 @@ export function MonthPicker({
               type="button"
               onClick={() => setViewYear((y) => y + 1)}
               className="grid size-7 place-items-center rounded-lg text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 cursor-pointer"
-              aria-label="Next year"
+              aria-label={t("nextYear")}
             >
               <ChevronIcon className="-rotate-90 size-3.5" />
             </button>
@@ -180,14 +172,14 @@ export function MonthPicker({
               onClick={handleClear}
               className="text-zinc-500 hover:text-red-600 cursor-pointer font-medium px-1.5 py-0.5 rounded hover:bg-zinc-50"
             >
-              {locale === "en" ? "Clear" : "清除"}
+              {t("clear")}
             </button>
             <button
               type="button"
               onClick={handleThisMonth}
               className="text-brand font-medium hover:underline cursor-pointer px-1.5 py-0.5 rounded hover:bg-orange-50"
             >
-              {locale === "en" ? "This month" : "本月"}
+              {t("thisMonth")}
             </button>
           </div>
         </div>

@@ -11,7 +11,7 @@ test("root redirects by Accept-Language", async ({ browser }) => {
 });
 
 test("custom language menu switches locale by mouse and keyboard", async ({ page }) => {
-  await page.goto("/zh-TW");
+  await page.goto("/zh");
   const trigger = page.getByRole("banner").getByRole("button", { name: /語言/ });
   await trigger.click();
   const menu = page.getByRole("menu");
@@ -28,10 +28,10 @@ test("custom language menu switches locale by mouse and keyboard", async ({ page
 });
 
 test("home → editor → fill → download .docx, data persists", async ({ page, isMobile }) => {
-  await page.goto("/zh-TW");
+  await page.goto("/zh");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("下載 Word");
   await page.getByRole("link", { name: "立即開始（免註冊）" }).click();
-  await expect(page).toHaveURL(/\/zh-TW\/editor$/);
+  await expect(page).toHaveURL(/\/zh\/editor$/);
 
   await page.getByRole("button", { name: "空白開始" }).click();
   await page.getByLabel("姓名").fill("測試人員");
@@ -63,7 +63,7 @@ test("home → editor → fill → download .docx, data persists", async ({ page
 });
 
 test("switching UI to English renders preview and export in English", async ({ page, isMobile }) => {
-  await page.goto("/zh-TW/editor");
+  await page.goto("/zh/editor");
   await page.getByRole("button", { name: "空白開始" }).click();
   await page.getByLabel("姓名").fill("測試人員");
   await page.getByRole("button", { name: "工作經歷", exact: true }).click();

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { CheckIcon, ChevronIcon, DownloadIcon, FileIcon, SparklesIcon, TrashIcon, UploadIcon } from "@/components/ui/icons";
 import { Menu, MenuItem } from "@/components/ui/menu";
+import { ResumeSwitcher } from "./resume-switcher";
 import { resumeFileName } from "@/lib/resume-content";
 import { getSampleResume } from "@/lib/sample-data";
 import { createEmptyResume, parseResumeJson } from "@/lib/schema";
@@ -118,6 +119,7 @@ export function Toolbar() {
   return (
     <div className="relative border-b border-zinc-200 bg-white">
       <div className="flex h-14 items-center gap-2 px-3 sm:px-4">
+        <ResumeSwitcher onNotify={() => setNotice({ tone: "success", text: t("renameSuccess") })} />
         <div className="hidden items-center gap-1 sm:flex">
           <Button variant="ghost" size="sm" onClick={() => setConfirmAction("sample")}>
             <SparklesIcon />

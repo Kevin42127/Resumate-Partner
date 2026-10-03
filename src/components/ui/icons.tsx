@@ -100,6 +100,17 @@ export const HomeIcon = (p: IconProps) => (
     <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
   </svg>
 );
+export const PencilIcon = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+  </svg>
+);
+export const CopyIcon = (p: IconProps) => (
+  <svg {...base(p)}>
+    <rect x="9" y="9" width="12" height="12" rx="2" />
+    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+  </svg>
+);
 export const MenuIcon = (p: IconProps) => (
   <svg {...base(p)}>
     <path d="M4 7h16M4 12h16M4 17h16" />

@@ -11,6 +11,9 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    return [{ source: "/zh-TW/:path*", destination: "/zh/:path*", permanent: true }];
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

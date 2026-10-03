@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -18,12 +19,15 @@ export function ConfirmDialog({
   open,
   title,
   desc,
-  confirmLabel = "確定",
-  cancelLabel = "取消",
+  confirmLabel,
+  cancelLabel,
   danger = false,
   onConfirm,
   onCancel,
 }: ConfirmDialogProps) {
+  const t = useTranslations("Editor.actions");
+  const confirmText = confirmLabel ?? t("confirm");
+  const cancelText = cancelLabel ?? t("cancel");
   const confirmBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -61,7 +65,7 @@ export function ConfirmDialog({
         )}
         <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
           <Button variant="outline" size="sm" onClick={onCancel}>
-            {cancelLabel}
+            {cancelText}
           </Button>
           <Button
             ref={confirmBtnRef}
@@ -73,7 +77,7 @@ export function ConfirmDialog({
                 : "shadow-md shadow-brand/25"
             }
           >
-            {confirmLabel}
+            {confirmText}
           </Button>
         </div>
       </div>

@@ -11,7 +11,7 @@ export default defineConfig({
   ],
   webServer: {
     command: "npm run start -- -p 3100",
-    url: "http://localhost:3100/zh-TW",
+    url: "http://localhost:3100/zh",
     reuseExistingServer: false,
     timeout: 120_000,
   },
