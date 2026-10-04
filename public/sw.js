@@ -50,11 +50,12 @@ async function precache() {
   await crawl(texts, cache);
 }
 
-// After serving a page/RSC payload online: cache it and make sure every chunk
-// it references is cached too — pages become offline-complete on first visit.
-async function refresh(request, pageRes, scanRes) {
+// Best-effort backfill after a page/RSC payload is served: crawl its chunk
+// tree and refill missing sitemap routes. The HTML write itself happens
+// inside the response promise — iOS kills the SW right after respondWith
+// settles, so cache writes must be awaited there, not deferred here.
+async function refresh(scanRes) {
   const cache = await caches.open(CACHE);
-  await cache.put(request, pageRes);
   await crawl([await scanRes.text()], cache);
   await healPages(cache);
 }
@@ -111,16 +112,19 @@ self.addEventListener("fetch", (event) => {
   // permanently brick itself (update downloads are fetched through the SW).
   if (url.pathname === "/sw.js") return;
 
-  // Immutable hashed build assets and static files: cache-first
+  // Immutable hashed build assets and static files: cache-first.
+  // The put is awaited inside the response promise — never fire-and-forget,
+  // or iOS kills the SW before the write lands.
   if (url.pathname.startsWith("/_next/static/") || STATIC_RE.test(url.pathname)) {
     event.respondWith(
       caches.match(request).then(
         (hit) =>
           hit ||
-          fetch(request).then((res) => {
+          fetch(request).then(async (res) => {
             if (res.ok) {
-              const copy = res.clone();
-              caches.open(CACHE).then((c) => c.put(request, copy));
+              try {
+                await (await caches.open(CACHE)).put(request, res.clone());
+              } catch {}
             }
             return res;
           }),
@@ -130,10 +134,15 @@ self.addEventListener("fetch", (event) => {
   }
 
   // Pages and RSC payloads: network-first, cached copy when offline
-  let toRefresh = null;
+  let toScan = null;
   const handled = fetch(request)
-    .then((res) => {
-      if (res.ok) toRefresh = { page: res.clone(), scan: res.clone() };
+    .then(async (res) => {
+      if (res.ok) {
+        try {
+          await (await caches.open(CACHE)).put(request, res.clone());
+        } catch {}
+        toScan = res.clone();
+      }
       return res;
     })
     .catch(async () => {
@@ -151,7 +160,7 @@ self.addEventListener("fetch", (event) => {
   // refresh errors must never affect the response.
   event.waitUntil(
     handled
-      .then(() => (toRefresh ? refresh(request, toRefresh.page, toRefresh.scan) : undefined))
+      .then(() => (toScan ? refresh(toScan) : undefined))
       .catch(() => {}),
   );
 });
