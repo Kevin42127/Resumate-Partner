@@ -1,4 +1,4 @@
-const CACHE = "resumate-v7";
+const CACHE = "resumate-v8";
 const STATIC_RE = /\.(?:png|ico|svg|woff2?|webmanifest)$/;
 
 function collect(text, into) {
@@ -80,6 +80,9 @@ self.addEventListener("fetch", (event) => {
   if (request.method !== "GET") return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
+  // Never intercept the SW's own update path — a broken handler here would
+  // permanently brick itself (update downloads are fetched through the SW).
+  if (url.pathname === "/sw.js") return;
 
   // Immutable hashed build assets and static files: cache-first
   if (url.pathname.startsWith("/_next/static/") || STATIC_RE.test(url.pathname)) {
