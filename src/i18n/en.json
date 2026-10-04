@@ -429,6 +429,9 @@
       }
     }
   },
+  "Pwa": {
+    "offlineReady": "Ready for offline use — edit and download with no connection"
+  },
   "NotFound": {
     "title": "Page not found",
     "description": "Lost, this page is. In another system, it may be.",

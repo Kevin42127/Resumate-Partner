@@ -54,9 +54,11 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   return (
     <html lang={HTML_TAGS[locale]} className={`${inter.variable} ${noto.variable}`}>
       <body className="flex min-h-dvh flex-col">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          {children}
+          <SwRegister />
+        </NextIntlClientProvider>
         <Analytics />
-        <SwRegister />
       </body>
     </html>
   );

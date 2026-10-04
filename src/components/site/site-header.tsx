@@ -7,6 +7,7 @@ import { buttonClass } from "@/components/ui/button";
 import { HomeIcon, MenuIcon, XIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import { LanguageSwitcher } from "./language-switcher";
+import { OfflineBadge } from "./offline-badge";
 
 export function Logo() {
   const t = useTranslations("Meta");
@@ -98,6 +99,7 @@ export function SiteHeader({
         >
           {t("blog")}
         </Link>
+        <OfflineBadge />
         <LanguageSwitcher />
         {pill && (
           <button

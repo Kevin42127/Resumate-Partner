@@ -143,6 +143,14 @@ export const ZoomOutIcon = (p: IconProps) => (
     <path d="m21 21-4.3-4.3M8 11h6" />
   </svg>
 );
+export const WifiIcon = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M12 20h.01" />
+    <path d="M2 8.82a15 15 0 0 1 20 0" />
+    <path d="M5 12.86a10 10 0 0 1 14 0" />
+    <path d="M8.5 16.43a5 5 0 0 1 7 0" />
+  </svg>
+);
 export const SparklesIcon = (p: IconProps) => (
   <svg {...base(p)}>
     <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />

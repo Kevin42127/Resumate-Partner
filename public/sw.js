@@ -1,4 +1,35 @@
-const CACHE = "resumate-v5";
+const CACHE = "resumate-v6";
+const STATIC_RE = /\.(?:png|ico|svg|woff2?|webmanifest)$/;
+
+function collect(text, into) {
+  for (const m of text.matchAll(/\/_next\/static\/[\w./-]+\.js/g)) into.add(m[0]);
+  for (const m of text.matchAll(/(?<![/\w])static\/chunks\/[\w.-]+\.js/g)) into.add(`/_next/${m[0]}`);
+}
+
+// Fetch every referenced chunk + follow nested "static/chunks/..." refs
+// (lazily-imported modules like the docx builder) until nothing new appears.
+// Static assets are never evicted, so a cached page's chunks always stay
+// available — every cached HTML entry remains self-consistent across deploys.
+async function crawl(texts, cache) {
+  const assets = new Set();
+  for (const t of texts) collect(t, assets);
+  const scanned = new Set();
+  for (;;) {
+    const pending = [...assets].filter((a) => !scanned.has(a));
+    if (!pending.length) break;
+    await Promise.allSettled(
+      pending.map(async (a) => {
+        scanned.add(a);
+        if (await cache.match(a)) return;
+        const res = await fetch(a);
+        if (res.ok) {
+          await cache.put(a, res.clone());
+          collect(await res.text(), assets);
+        }
+      }),
+    );
+  }
+}
 
 async function precache() {
   const cache = await caches.open(CACHE);
@@ -7,35 +38,24 @@ async function precache() {
     const xml = await (await fetch("/sitemap.xml")).text();
     paths = [...new Set([...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname))];
   } catch {}
-  const assets = new Set();
-  const collect = (text, into) => {
-    for (const m of text.matchAll(/\/_next\/static\/[\w./-]+\.js/g)) into.add(m[0]);
-    for (const m of text.matchAll(/(?<![/\w])static\/chunks\/[\w.-]+\.js/g)) into.add(`/_next/${m[0]}`);
-  };
+  const texts = [];
   await Promise.allSettled(
     paths.map(async (p) => {
       const res = await fetch(p);
       if (!res.ok) return;
       await cache.put(p, res.clone());
-      collect(await res.text(), assets);
+      texts.push(await res.text());
     }),
   );
-  // Crawl JS chunks: lazily-imported chunks (e.g. the docx builder) appear as
-  // "static/chunks/..." strings inside other chunks — follow until none are new.
-  const scanned = new Set();
-  for (;;) {
-    const pending = [...assets].filter((a) => !scanned.has(a));
-    if (!pending.length) break;
-    await Promise.allSettled(
-      pending.map(async (a) => {
-        scanned.add(a);
-        try {
-          collect(await (await fetch(a)).text(), assets);
-        } catch {}
-      }),
-    );
-  }
-  await Promise.allSettled([...assets].map((a) => cache.add(a)));
+  await crawl(texts, cache);
+}
+
+// After serving a page/RSC payload online: cache it and make sure every chunk
+// it references is cached too — pages become offline-complete on first visit.
+async function refresh(request, pageRes, scanRes) {
+  const cache = await caches.open(CACHE);
+  await cache.put(request, pageRes);
+  await crawl([await scanRes.text()], cache);
 }
 
 self.addEventListener("install", (event) => {
@@ -47,7 +67,11 @@ self.addEventListener("activate", (event) => {
     caches
       .keys()
       .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
-      .then(() => self.clients.claim()),
+      .then(() => self.clients.claim())
+      // Install's waitUntil already resolved, so precache is done — tell pages
+      // the whole site (incl. lazy chunks) is usable offline.
+      .then(() => self.clients.matchAll())
+      .then((clients) => clients.forEach((c) => c.postMessage("sw-ready"))),
   );
 });
 
@@ -58,7 +82,7 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
 
   // Immutable hashed build assets and static files: cache-first
-  if (url.pathname.startsWith("/_next/static/") || /\.(?:png|ico|svg|woff2?|webmanifest)$/.test(url.pathname)) {
+  if (url.pathname.startsWith("/_next/static/") || STATIC_RE.test(url.pathname)) {
     event.respondWith(
       caches.match(request).then(
         (hit) =>
@@ -79,10 +103,7 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     fetch(request)
       .then((res) => {
-        if (res.ok) {
-          const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put(request, copy));
-        }
+        if (res.ok) event.waitUntil(refresh(request, res.clone(), res.clone()));
         return res;
       })
       .catch(async () => {
