@@ -56,6 +56,33 @@ async function refresh(request, pageRes, scanRes) {
   const cache = await caches.open(CACHE);
   await cache.put(request, pageRes);
   await crawl([await scanRes.text()], cache);
+  await healPages(cache);
+}
+
+// If install-time precache lost sitemap routes to a flaky network, refill any
+// missing page on subsequent online traffic — throttled to once a minute.
+let lastHeal = 0;
+async function healPages(cache) {
+  const now = Date.now();
+  if (now - lastHeal < 60_000) return;
+  lastHeal = now;
+  try {
+    const xml = await (await fetch("/sitemap.xml")).text();
+    const paths = [...new Set([...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname))];
+    const missing = [];
+    for (const p of paths) if (!(await cache.match(p))) missing.push(p);
+    if (!missing.length) return;
+    const texts = [];
+    await Promise.allSettled(
+      missing.map(async (p) => {
+        const res = await fetch(p);
+        if (!res.ok) return;
+        await cache.put(p, res.clone());
+        texts.push(await res.text());
+      }),
+    );
+    await crawl(texts, cache);
+  } catch {}
 }
 
 self.addEventListener("install", (event) => {
