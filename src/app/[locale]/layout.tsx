@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Analytics } from "@vercel/analytics/next";
+import { SwRegister } from "@/components/site/sw-register";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { SITE_URL } from "@/lib/site";
 import "../globals.css";
@@ -55,6 +56,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
       <body className="flex min-h-dvh flex-col">
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
         <Analytics />
+        <SwRegister />
       </body>
     </html>
   );

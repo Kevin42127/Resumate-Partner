@@ -1,4 +1,10 @@
-export const POSTS = ["getting-started", "job-sites", "vs-platforms", "why-resumate"] as const;
+export const POSTS = [
+  "getting-started",
+  "job-sites",
+  "vs-platforms",
+  "why-resumate",
+  "verify-privacy",
+] as const;
 export type PostSlug = (typeof POSTS)[number];
 export const isPostSlug = (slug: string): slug is PostSlug =>
   (POSTS as readonly string[]).includes(slug);

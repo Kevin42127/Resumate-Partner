@@ -383,6 +383,49 @@
             "p": ["Put together, these trade-offs mean Resumate Partner won't be the most feature-rich resume tool — but that was never the goal. The goal is: open it, fill it in, walk away with a Word file that's yours — without handing anything over along the way."]
           }
         ]
+      },
+      "verify-privacy": {
+        "title": "Is your data really never uploaded? Three ways to check",
+        "desc": "Don't take our word for it — open DevTools or pull the network cable and confirm that your resume data never leaves the browser.",
+        "date": "2026-10-04",
+        "body": [
+          {
+            "p": [
+              "Every website claims to care about privacy, but \"trust us\" shouldn't be the answer. Resumate Partner is built so you can verify it yourself — here are three checks, the first two of which need no technical background at all."
+            ]
+          },
+          {
+            "h": "Check 1: pull the plug",
+            "p": [
+              "After opening the site once, go offline — turn off Wi-Fi, or press F12 and tick Offline in the Network panel. Then keep using it: edit your resume, switch pages, reload, download the .docx, export JSON.",
+              "This is the strongest possible proof: if any step needed to send your data to a server, it would break the moment you disconnect. Everything keeps working, which means your data never needed to leave in the first place."
+            ]
+          },
+          {
+            "h": "Check 2: inspect every outgoing request",
+            "p": [
+              "Press F12, open the Network panel, then type in the editor, switch resumes, and hit \"Download .docx\" — watch every request that goes out.",
+              "You'll see static assets (JavaScript, CSS) and anonymous analytics events, but open any of them and inspect the payload — none of them carry your name, phone number, or experience. If you're skeptical, compare them against your resume fields word by word."
+            ]
+          },
+          {
+            "h": "Check 3: look at where the data lives",
+            "p": [
+              "F12 → Application tab → Local Storage — your entire resume JSON sits right here, and this is the only place it exists. The \"Export JSON\" button reads exactly this data, so you can see its full contents with your own eyes.",
+              "On the server side there is no database, no account system, and no endpoint that accepts resume data — there's nowhere for it to be uploaded even if it wanted to."
+            ]
+          },
+          {
+            "h": "In the interest of honesty: what does get sent",
+            "p": [
+              "The site uses Vercel Analytics to collect anonymous statistics — for example which page was viewed, and whether a downloaded resume was in Chinese or English. These events contain no resume content whatsoever, but they do make network requests.",
+              "So the accurate claim is \"your resume content is never uploaded\", not \"this site never touches the network\". We'd rather state it precisely so you can check it for yourself."
+            ]
+          },
+          {
+            "p": ["Privacy shouldn't rest on \"trust us\" — it should rest on \"you can check\". That's also why the data is deliberately stored somewhere you can see and export."]
+          }
+        ]
       }
     }
   },
