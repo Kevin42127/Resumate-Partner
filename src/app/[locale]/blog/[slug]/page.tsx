@@ -9,8 +9,15 @@ import { ArrowLeftIcon } from "@/components/ui/icons";
 import { isPostSlug, JOB_SITE_URLS, type PostSection } from "@/lib/posts";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/blog/[slug]">): Promise<Metadata> {
-  const { locale } = await params;
-  return { alternates: { canonical: `/${locale}/blog` } };
+  const { locale, slug } = await params;
+  if (!isPostSlug(slug)) return {};
+  const t = await getTranslations({ locale, namespace: "Blog" });
+  return {
+    title: t(`posts.${slug}.title`),
+    description: t(`posts.${slug}.desc`),
+    alternates: { canonical: `/${locale}/blog/${slug}` },
+    openGraph: { type: "article", title: t(`posts.${slug}.title`), description: t(`posts.${slug}.desc`) },
+  };
 }
 
 export default async function PostPage({ params }: PageProps<"/[locale]/blog/[slug]">) {
