@@ -1,4 +1,4 @@
-const CACHE = "resumate-v6";
+const CACHE = "resumate-v7";
 const STATIC_RE = /\.(?:png|ico|svg|woff2?|webmanifest)$/;
 
 function collect(text, into) {
@@ -100,21 +100,28 @@ self.addEventListener("fetch", (event) => {
   }
 
   // Pages and RSC payloads: network-first, cached copy when offline
-  event.respondWith(
-    fetch(request)
-      .then((res) => {
-        if (res.ok) event.waitUntil(refresh(request, res.clone(), res.clone()));
-        return res;
-      })
-      .catch(async () => {
-        // Client-side RSC fetches carry ?_rsc query — match cached HTML ignoring it.
-        // Next falls back to a hard navigation when an RSC request gets HTML.
-        const hit = await caches.match(request, { ignoreSearch: true });
-        if (hit) return hit;
-        if (request.mode === "navigate") {
-          return (await caches.match("/zh")) || (await caches.match("/en")) || Response.error();
-        }
-        return Response.error();
-      }),
+  let toRefresh = null;
+  const handled = fetch(request)
+    .then((res) => {
+      if (res.ok) toRefresh = { page: res.clone(), scan: res.clone() };
+      return res;
+    })
+    .catch(async () => {
+      // Client-side RSC fetches carry ?_rsc query — match cached HTML ignoring it.
+      // Next falls back to a hard navigation when an RSC request gets HTML.
+      const hit = await caches.match(request, { ignoreSearch: true });
+      if (hit) return hit;
+      if (request.mode === "navigate") {
+        return (await caches.match("/zh")) || (await caches.match("/en")) || Response.error();
+      }
+      return Response.error();
+    });
+  event.respondWith(handled);
+  // Registered synchronously so iOS Safari keeps the SW alive for cache work;
+  // refresh errors must never affect the response.
+  event.waitUntil(
+    handled
+      .then(() => (toRefresh ? refresh(request, toRefresh.page, toRefresh.scan) : undefined))
+      .catch(() => {}),
   );
 });
