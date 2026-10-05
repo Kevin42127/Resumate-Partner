@@ -42,3 +42,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 dev.log
+
+# promo video project
+/promo/node_modules
+/promo/out
+/tmp-media
+/videos

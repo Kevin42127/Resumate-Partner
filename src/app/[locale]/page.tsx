@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Faq, Features, FinalCta, Hero, Steps } from "@/components/home/home-sections";
+import { Demo, Faq, Features, FinalCta, Hero, Steps } from "@/components/home/home-sections";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { FAQ_KEYS } from "@/lib/faq";
@@ -26,6 +26,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <Hero />
         <Features />
         <Steps />
+        <Demo />
         <Faq />
         <FinalCta />
       </main>

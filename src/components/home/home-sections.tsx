@@ -125,6 +125,32 @@ export function Steps() {
   );
 }
 
+export function Demo() {
+  const t = useTranslations("Home.demo");
+  return (
+    <section className="flex min-h-[80dvh] items-center bg-white py-24">
+      <div className={CONTAINER}>
+        <Reveal>
+          <h2 className="text-center text-3xl font-bold tracking-tight text-zinc-950 sm:text-5xl">{t("title")}</h2>
+        </Reveal>
+        <Reveal delay={120}>
+          <div className="mx-auto mt-14 max-w-4xl overflow-hidden rounded-2xl border border-zinc-200 shadow-2xl shadow-zinc-900/10">
+            <video
+              src="/promo.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+              className="block w-full"
+            />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (

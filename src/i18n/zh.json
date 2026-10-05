@@ -41,6 +41,7 @@
       "preview": { "title": "即時預覽", "desc": "右側 A4 紙張即時呈現最終樣式。" },
       "download": { "title": "下載 Word", "desc": "一鍵下載 .docx，用 Word 開啟再微調。" }
     },
+    "demo": { "title": "看看實際怎麼用" },
     "faq": {
       "title": "常見問題",
       "why": { "q": "為什麼是 Word，不是 PDF？", "a": "PDF 下載後就很難修改。Word 檔讓你針對不同職缺微調內容，很多公司與人力銀行也接受或要求 Word 格式。" },

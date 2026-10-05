@@ -41,6 +41,7 @@
       "preview": { "title": "Preview live", "desc": "An A4 page on the right shows the final look instantly." },
       "download": { "title": "Download Word", "desc": "Get a .docx in one click and polish it in Word." }
     },
+    "demo": { "title": "See it in action" },
     "faq": {
       "title": "FAQ",
       "why": { "q": "Why Word instead of PDF?", "a": "PDFs are hard to edit once downloaded. A Word file lets you tailor your resume for each role, and many employers accept or require .docx." },
